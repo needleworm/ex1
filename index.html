@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나나랩(NaNa Lab) 대국민 안내 포털 | 모두를 위한 실용 AI 기술 연구소</title>
+  <meta name="description" content="AI 엔지니어 반병현 대표가 이끄는 나나랩(NaNa Lab.)의 주요 업무, 대국민 무료 AI 도구, 연구 개발 및 최신 이슈를 친절하게 소개하는 종합 포털입니다.">
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ea580c; /* 메인 오렌지 */
+      --primary-hover: #c2410c; /* 진한 오렌지 */
+      --primary-light: #ffedd5; /* 부드러운 오렌지 배경 */
+      --secondary: #f59e0b; /* 앰버/골드 오렌지 */
+      --accent: #f97316; /* 밝은 오렌지 악센트 */
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --text-light: #9ca3af;
+      --bg-base: #fafaf9;
+      --bg-card: #ffffff;
+      --border: #f3f4f6;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 상단 탑바 (공공 포털 스타일 친절 안내) */
+    .gov-banner {
+      background: #431407;
+      color: #fed7aa;
+      font-size: 0.85rem;
+      padding: 8px 16px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+    .gov-banner a {
+      color: #fdba74;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* 내비게이션 바 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #111827;
+    }
+    .logo-badge {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .btn-portal-official {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      box-shadow: 0 2px 4px rgba(234, 88, 12, 0.3);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-portal-official:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* 히어로 섹션 */
+    .hero {
+      background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+      padding: 70px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #0f172a;
+      margin-bottom: 18px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #ea580c, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 32px;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-main {
+      background: var(--primary);
+      color: white;
+      padding: 13px 28px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-main:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: white;
+      color: var(--text-main);
+      padding: 13px 26px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+    }
+
+    /* 컨테이너 및 섹션 공통 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-wrap {
+      padding: 65px 0;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 48px;
+    }
+    .section-subtitle {
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* 카드 그리드 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* 업무 소개 카드 */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #fed7aa;
+    }
+    .card-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.65;
+      flex-grow: 1;
+      margin-bottom: 18px;
+    }
+    .card-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .card-tag {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* 대표 및 조직 소개 배너 */
+    .profile-banner {
+      background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 36px;
+      align-items: center;
+      margin-bottom: 60px;
+      box-shadow: 0 10px 25px -5px rgba(194, 65, 12, 0.25);
+    }
+    .profile-avatar {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: #9a3412;
+      border: 4px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #ffedd5;
+      margin: 0 auto;
+    }
+    .profile-info h3 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .profile-role {
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 3px 12px;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+    }
+    .profile-info p {
+      color: #ffedd5;
+      font-size: 1.02rem;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .profile-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .profile-badge-item {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 최근 이슈 및 하이라이트 섹션 */
+    .issue-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+    .issue-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+    .issue-category {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .cat-tool { background: #ffedd5; color: #c2410c; }
+    .cat-research { background: #fef3c7; color: #b45309; }
+    .cat-edu { background: #fed7aa; color: #9a3412; }
+    .cat-open { background: #fae8ff; color: #86198f; }
+
+    .issue-card h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #111827;
+      line-height: 1.4;
+    }
+    .issue-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .issue-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+    }
+
+    /* 국민 무료 AI 실무 도구 갤러리 */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .tool-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+    .tool-box:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .tool-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #ffedd5;
+      color: #ea580c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .tool-header h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .tool-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #fff7ed;
+      color: #ea580c;
+      border: 1px solid #fed7aa;
+      font-weight: 600;
+    }
+    .tool-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .tool-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .tool-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 국민 소통 FAQ 아코디언 */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .faq-question {
+      padding: 18px 22px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.05rem;
+      background: white;
+      user-select: none;
+    }
+    .faq-question i {
+      transition: transform 0.3s ease;
+      color: var(--text-light);
+    }
+    .faq-answer {
+      padding: 0 22px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+    .faq-item.active {
+      border-color: var(--primary);
+    }
+    .faq-item.active .faq-question {
+      color: var(--primary);
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+    .faq-item.active .faq-answer {
+      padding: 0 22px 20px;
+      max-height: 250px;
+    }
+
+    /* 공공 협력 및 문의 배너 */
+    .cta-section {
+      background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
+      color: white;
+      padding: 55px 24px;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      margin: 40px auto 80px;
+      max-width: 1200px;
+      box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3);
+    }
+    .cta-section h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto 28px;
+      opacity: 0.95;
+    }
+    .cta-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-cta-white {
+      background: white;
+      color: var(--primary);
+      padding: 13px 30px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta-white:hover {
+      transform: translateY(-2px);
+      background: #f8fafc;
+    }
+    .btn-cta-ghost {
+      border: 2px solid white;
+      color: white;
+      padding: 11px 26px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-cta-ghost:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* 푸터 */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 60px 24px 30px;
+      font-size: 0.9rem;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand h4 {
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .footer-col h5 {
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-col a:hover {
+      color: white;
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid #1e293b;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+    .footer-bottom a {
+      color: #fb923c;
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 900px) {
+      .profile-banner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 32px 24px;
+      }
+      .profile-info h3 {
+        justify-content: center;
+      }
+      .profile-badges {
+        justify-content: center;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 안내 상단 배너 -->
+  <div class="gov-banner">
+    <span>💡 <strong>안내:</strong> 본 포털은 대한민국 국민과 공공·산업체를 위해 나나랩(NaNa Lab)의 주요 기술 서비스와 연구 활동을 알기 쉽게 정리한 대국민 안내 사이트입니다.</span>
+    <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer">공식 웹사이트 방문 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+  </div>
+
+  <!-- 헤더 & 내비게이션 -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-microchip" style="color: var(--primary);"></i>
+        <span>NaNa Lab.</span>
+        <span class="logo-badge">대국민 포털</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">연구소 소개</a></li>
+        <li><a href="#services">주요 업무</a></li>
+        <li><a href="#issues">최근 이슈 & 동향</a></li>
+        <li><a href="#tools">무료 실무 도구</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+      </ul>
+      <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer" class="btn-portal-official">
+        <span>공식 나나랩 바로가기</span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <i class="fa-solid fa-sparkles"></i> 쉽고 친절한 인공지능 기술의 대중화
+      </div>
+      <h1>국민 모두가 누리는 <span>실용 AI 파트너</span>,<br>나나랩(NaNa Lab)에 오신 것을 환영합니다</h1>
+      <p>
+        AI 엔지니어이자 작가인 반병현 대표가 이끄는 나나랩은 AI 기술 자문, R&D 과제 연구, 시제품 개발, 
+        그리고 국민 모두가 웹에서 무료로 쓸 수 있는 260여 종의 실무 도구를 제공합니다.
+      </p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn-main">
+          <i class="fa-solid fa-magnifying-glass"></i> 나나랩 주요 업무 알아보기
+        </a>
+        <a href="#tools" class="btn-outline">
+          <i class="fa-solid fa-laptop-code"></i> 국민 무료 웹 도구 써보기
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 대표 및 연구소 소개 -->
+  <section id="about" class="section-wrap" style="padding-top: 40px;">
+    <div class="container">
+      <div class="profile-banner">
+        <div class="profile-avatar">
+          <i class="fa-solid fa-user-astronaut"></i>
+        </div>
+        <div class="profile-info">
+          <h3>
+            <span>반병현 대표 / AI 연구자</span>
+            <span class="profile-role">주식회사 나나컴퍼니 · 치즈케익스튜디오</span>
+          </h3>
+          <p>
+            KAIST 바이오및뇌공학과를 조기 졸업(학사·석사)하고 다수의 AI/빅데이터 관련 베스트셀러 도서를 집필한 공학자입니다.
+            복잡하고 어려운 인공지능 기술을 산업 현장과 모든 국민의 일상 업무에서 곧바로 쓰일 수 있도록 
+            <strong>'가장 쉬운 실용 AI'</strong> 연구와 무료 오픈소스 앱 배포에 앞장서고 있습니다.
+          </p>
+          <div class="profile-badges">
+            <span class="profile-badge-item"><i class="fa-solid fa-graduation-cap"></i> KAIST 바이오및뇌공학과 학·석사</span>
+            <span class="profile-badge-item"><i class="fa-solid fa-book-open"></i> 다수 AI 서적 집필 및 베스트셀러 작가</span>
+            <span class="profile-badge-item"><i class="fa-solid fa-certificate"></i> 특허 출원 30건 이상 및 R&D 총괄 역임</span>
+            <span class="profile-badge-item"><i class="fa-solid fa-earth-asia"></i> 260개 이상의 무료 실용 웹앱 공개</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 주요 업무 섹션 -->
+  <section id="services" class="section-wrap" style="background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Our Missions & Services</span>
+        <h2 class="section-title">나나랩이 수행하는 핵심 업무</h2>
+        <p class="section-desc">민간 기업부터 공공기관까지, AI 도입을 고민하는 모든 곳에 최적의 기술 솔루션을 제시합니다.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- 업무 1 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>AI 기술 자문 & 사업 기획</h3>
+          <p>
+            생성형 AI와 머신러닝을 비즈니스 및 공공 행정에 어떻게 접목할지 단계별 도입 전략을 수립합니다.
+            불필요한 비용을 줄이고 현장에 실질적으로 도움이 되는 기술 로드맵을 제공합니다.
+          </p>
+          <div class="card-tag-list">
+            <span class="card-tag">#기술도입컨설팅</span>
+            <span class="card-tag">#비즈니스기획</span>
+            <span class="card-tag">#비용최적화</span>
+          </div>
+        </div>
+
+        <!-- 업무 2 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-microscope"></i></div>
+          <h3>국가 R&D 과제 협력 & PoC</h3>
+          <p>
+            정부 및 공공 R&D 연구개발 과제 제안서 작성, 개념 검증(PoC) 수행, 그리고 원천 기술에 대한 특허 출원까지
+            성공적인 연구 성과 창출을 위한 전방위 기술 파트너십을 수행합니다.
+          </p>
+          <div class="card-tag-list">
+            <span class="card-tag">#정부R&D</span>
+            <span class="card-tag">#개념검증(PoC)</span>
+            <span class="card-tag">#특허지원</span>
+          </div>
+        </div>
+
+        <!-- 업무 3 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3>AI 시제품(MVP) 및 맞춤 앱 개발</h3>
+          <p>
+            아이디어를 빠르게 가시화하는 고속 프로토타이핑(MVP)을 구현합니다.
+            사내 업무 효율화를 위한 전용 툴, 머신러닝 연동 인터페이스를 민첩하게 제작합니다.
+          </p>
+          <div class="card-tag-list">
+            <span class="card-tag">#고속시제품</span>
+            <span class="card-tag">#MVP개발</span>
+            <span class="card-tag">#사내업무도구</span>
+          </div>
+        </div>
+
+        <!-- 업무 4 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <h3>대국민/임직원 맞춤형 AI 교육</h3>
+          <p>
+            비전공자도 단시간에 이해할 수 있는 실무 중심 생성형 AI 및 업무 자동화 교육을 제공합니다.
+            초거대 AI 프롬프트 엔지니어링부터 파이썬 실무 활용까지 쉽게 지도합니다.
+          </p>
+          <div class="card-tag-list">
+            <span class="card-tag">#생성형AI교육</span>
+            <span class="card-tag">#업무자동화</span>
+            <span class="card-tag">#기업/공공특강</span>
+          </div>
+        </div>
+
+        <!-- 업무 5 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
+          <h3>공공 오픈 도구 아카이브 구축</h3>
+          <p>
+            국민 누구나 설치 없이 브라우저에서 사용할 수 있는 다양한 유틸리티 도구를 무료로 개방하여,
+            대한민국 디지털 업무 생산성 향상에 기여하고 있습니다.
+          </p>
+          <div class="card-tag-list">
+            <span class="card-tag">#오픈소스</span>
+            <span class="card-tag">#웹유틸리티</span>
+            <span class="card-tag">#서버리스보안</span>
+          </div>
+        </div>
+
+        <!-- 업무 6 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>웹 취약점 진단 및 안전한 실습 플랫폼</h3>
+          <p>
+            안전한 소프트웨어 환경을 위한 취약점 진단 가이드와 함께 개발자·보안 입문자를 위한
+            실제 모의 훈련 실습 웹(사내 인트라넷, 모의 포털 등)을 구축 및 연구합니다.
+          </p>
+          <div class="card-tag-list">
+            <span class="card-tag">#보안실습</span>
+            <span class="card-tag">#취약점점검</span>
+            <span class="card-tag">#시뮬레이터</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 최근 이슈 및 동향 -->
+  <section id="issues" class="section-wrap">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Recent Trends & Highlights</span>
+        <h2 class="section-title">나나랩의 최근 주요 소식과 연구 동향</h2>
+        <p class="section-desc">나나랩이 최근 연구하고 공개한 새로운 실무 도구와 AI 트렌드 소식을 전달합니다.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- 이슈 1 -->
+        <div class="issue-card">
+          <span class="issue-category cat-tool">신규 도구 배포</span>
+          <h4>'서버리스 간트차트 일정 초안 도구' 공개</h4>
+          <p>
+            민감한 프로젝트 일정이 외부 서버로 전송되지 않고 브라우저 내에서만 안전하게 계산되는 간트차트 도구를 공개했습니다.
+            공휴일 및 제외일을 자동 계산하여 SVG/CSV로 손쉽게 내보낼 수 있습니다.
+          </p>
+          <div class="issue-meta">
+            <span><i class="fa-regular fa-calendar"></i> 상시 지원</span>
+            <span>nanalab.kr 도구실</span>
+          </div>
+        </div>
+
+        <!-- 이슈 2 -->
+        <div class="issue-card">
+          <span class="issue-category cat-research">트렌드 연구</span>
+          <h4>'바이브 코딩(Vibe Coding)'과 실무 AI 개발</h4>
+          <p>
+            AI 모델과의 자연어 대화를 통해 실제 작동하는 웹 애플리케이션을 초고속으로 제작하는 '바이브 코딩' 방법론을
+            연구하고 대중이 실무 프로젝트에 활용할 수 있는 가이드라인과 템플릿을 공유하고 있습니다.
+          </p>
+          <div class="issue-meta">
+            <span><i class="fa-regular fa-newspaper"></i> 연구 노트</span>
+            <span>PPP 개발 가이드</span>
+          </div>
+        </div>
+
+        <!-- 이슈 3 -->
+        <div class="issue-card">
+          <span class="issue-category cat-open">개방 데이터</span>
+          <h4>누적 260개+ 오픈 웹앱 및 RSS/JSON 피드 제공</h4>
+          <p>
+            국민 누구나 나나랩에서 개발되는 최신 도구와 연구 성과를 실시간으로 받아볼 수 있도록
+            데이터 피드(JSON/RSS)를 공식 오픈하여 정보 접근성을 극대화했습니다.
+          </p>
+          <div class="issue-meta">
+            <span><i class="fa-solid fa-rss"></i> 구독 피드</span>
+            <span>데이터 아카이브</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 국민을 위한 추천 무료 도구 갤러리 -->
+  <section id="tools" class="section-wrap" style="background: #f1f5f9;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Free Public Tools</span>
+        <h2 class="section-title">국민 누구나 무료로 쓰는 나나랩 웹 도구</h2>
+        <p class="section-desc">회원가입 없이, 데이터 유출 걱정 없이 브라우저에서 바로 사용하는 실용 도구들입니다.</p>
+      </div>
+
+      <div class="tool-grid">
+        <!-- 도구 1 -->
+        <div class="tool-box">
+          <div class="tool-header">
+            <div class="tool-icon"><i class="fa-solid fa-chart-gantt"></i></div>
+            <div>
+              <h4>간트 일정 초안기</h4>
+              <span class="tool-badge">프라이버시 100%</span>
+            </div>
+          </div>
+          <p>서버 통신 없이 브라우저 내에서 안전하게 프로젝트 업무 지연 및 일정을 시각화합니다.</p>
+          <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer" class="tool-link">
+            체험하러 가기 <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <!-- 도구 2 -->
+        <div class="tool-box">
+          <div class="tool-header">
+            <div class="tool-icon"><i class="fa-solid fa-tags"></i></div>
+            <div>
+              <h4>웹 메타태그 작성기</h4>
+              <span class="tool-badge">개발·홍보 지원</span>
+            </div>
+          </div>
+          <p>검색엔진 최적화(SEO)와 SNS 미리보기 카드에 필요한 메타태그를 자동으로 구성해 줍니다.</p>
+          <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer" class="tool-link">
+            체험하러 가기 <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <!-- 도구 3 -->
+        <div class="tool-box">
+          <div class="tool-header">
+            <div class="tool-icon"><i class="fa-solid fa-table"></i></div>
+            <div>
+              <h4>엑셀 데이터 가공 도구</h4>
+              <span class="tool-badge">업무 자동화</span>
+            </div>
+          </div>
+          <p>복잡한 엑셀 작업과 반복되는 데이터 변환을 클릭 몇 번으로 쉽게 해결하는 도구 모음입니다.</p>
+          <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer" class="tool-link">
+            체험하러 가기 <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+
+        <!-- 도구 4 -->
+        <div class="tool-box">
+          <div class="tool-header">
+            <div class="tool-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <div>
+              <h4>공공 연구·특허 아카이브</h4>
+              <span class="tool-badge">지식 개방</span>
+            </div>
+          </div>
+          <p>반병현 대표와 연구진이 발표한 연구 논문, 특허 요약 및 지식재산권 정보를 열람할 수 있습니다.</p>
+          <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer" class="tool-link">
+            체험하러 가기 <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 36px;">
+        <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer" class="btn-outline" style="border-color: #cbd5e1;">
+          <i class="fa-solid fa-cubes"></i> 260여 종 전체 도구 둘러보기 (nanalab.kr)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 국민 소통 FAQ -->
+  <section id="faq" class="section-wrap">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">FAQ</span>
+        <h2 class="section-title">자주 묻는 질문 (FAQ)</h2>
+        <p class="section-desc">나나랩의 서비스 이용과 협력에 대해 국민 여러분이 가장 궁금해하시는 점들을 모았습니다.</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Q. 나나랩 웹사이트의 도구들은 정말 무료인가요? 개인정보는 안전한가요?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            네! 나나랩에서 공개한 대다수의 실무 도구(일정표, 텍스트 변환, 계산 도구 등)는 전 국민 누구나 별도의 회원가입 없이 무료로 사용할 수 있습니다. 또한 사용자가 입력한 업무 내용이 외부 서버로 업로드되지 않고 사용자의 웹 브라우저 안에서만 실행되는 '클라이언트 사이드 기술'을 적극 도입하여 보안과 개인정보를 완벽히 보호합니다.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Q. 기업이나 공공기관에서 AI 자문 및 교육을 요청할 수 있나요?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            가능합니다. 나나랩(주식회사 나나컴퍼니)은 공공기관, 대기업, 스타트업 등을 대상으로 인공지능 도입을 위한 로드맵 수립, R&D 기획 자문, 임직원 대상 생성형 AI 활용 및 실무 자동화 특강을 정기적으로 수행하고 있습니다. 공식 사이트 문의 채널을 통해 협력 요청을 남겨주시면 친절히 안내해 드립니다.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Q. 정부 지원 과제나 산학 협력 R&D도 함께 진행하나요?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            네, 나나랩은 AI 엔지니어링 역량과 특허 출원 경험을 바탕으로 국가 R&D 연구개발 과제 컨소시엄 구성, PoC(기술 실증) 개발, 특허 분석 및 출원 지원 등 다양한 산학연 협력 프로젝트를 진행하고 있습니다.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Q. '바이브 코딩'이나 비전공자도 AI 앱을 만들 수 있나요?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            물론입니다. 나나랩은 "누구나 기술의 혜택을 누릴 수 있어야 한다"는 철학으로 복잡한 코딩 지식 없이도 AI 모델과 소통하며 유용한 도구를 직접 구축할 수 있는 실용 팁과 오픈소스 템플릿을 지속적으로 전파하고 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 하단 협력 안내 배너 -->
+  <div class="container">
+    <div class="cta-section">
+      <h2>기술로 더 편리해지는 대한민국, 나나랩이 함께합니다</h2>
+      <p>
+        AI 기술 도입 컨설팅, R&D 협력, 강연 문의부터 무료 실무 도구 활용까지<br>
+        나나랩 공식 홈페이지에서 다양한 정보와 소식을 직접 만나보세요.
+      </p>
+      <div class="cta-links">
+        <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer" class="btn-cta-white">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> 나나랩 공식 웹사이트 방문하기
+        </a>
+        <a href="#services" class="btn-cta-ghost">
+          <i class="fa-solid fa-circle-info"></i> 업무 소개 다시 보기
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>NaNa Lab. (나나랩)</h4>
+        <p>
+          주식회사 나나컴퍼니 · 치즈케익스튜디오 | 대표: 반병현<br>
+          실용적인 인공지능 연구와 오픈 유틸리티 도구를 통해 지식과 기술의 문턱을 낮추고 있습니다.
+        </p>
+        <p style="font-size: 0.8rem; color: #64748b;">
+          ※ 본 사이트는 국민들에게 나나랩의 주요 활동과 성과를 알기 쉽게 안내하는 포털 페이지입니다.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>포털 바로가기</h5>
+        <ul>
+          <li><a href="#about">연구소 소개</a></li>
+          <li><a href="#services">주요 업무 안내</a></li>
+          <li><a href="#issues">최신 이슈 & 연구</a></li>
+          <li><a href="#tools">국민 무료 웹 도구</a></li>
+          <li><a href="#faq">자주 묻는 질문</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>공식 채널</h5>
+        <ul>
+          <li><a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer">공식 홈페이지 (nanalab.kr)</a></li>
+          <li><a href="https://bhban.kr" target="_blank" rel="noopener noreferrer">반병현 대표 웹사이트</a></li>
+          <li><a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer">데이터 & RSS 구독</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 NaNa Lab. All rights reserved. 대한민국 실용 AI 안내 포털.</span>
+      <span>공식 웹 주소: <a href="https://nanalab.kr" target="_blank" rel="noopener noreferrer">https://nanalab.kr</a></span>
+    </div>
+  </footer>
+
+  <!-- 인터랙션 스크립트 (FAQ 아코디언 등) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // FAQ 아코디언 동작
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // 스무스 스크롤 네비게이션
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
